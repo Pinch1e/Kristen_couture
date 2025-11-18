@@ -82,7 +82,7 @@ class CartManager {
         </div>
         <div style="text-align: right;">
           <p><strong>$${(item.price * item.quantity).toFixed(2)}</strong></p>
-          <button class="btn btn-contact" onclick="cartManager.removeItem(${item.id})">Remove</button>
+          <button class="btn btn-remove" onclick="cartManager.removeItem(${item.id})">Remove</button>
         </div>
       </div>
     `).join('');

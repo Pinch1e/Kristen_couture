@@ -610,14 +610,30 @@ img {
 }
 
 .socials a {
-  color: var(--text-light);
   text-decoration: none;
-  font-size: var(--font-size-lg);
-  transition: color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .socials a:hover {
-  color: var(--accent-pink);
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.socials img {
+  width: 24px;
+  height: 24px;
+}
+
+.socials a[aria-label="Instagram"] img {
+  filter: hue-rotate(320deg) saturate(2);
+}
+
+.socials a[aria-label="Facebook"] img {
+  filter: hue-rotate(240deg) saturate(2);
+}
+
+.socials a[aria-label="WhatsApp"] img {
+  filter: hue-rotate(120deg) saturate(2);
 }
 
 /* Filters and Sort */

@@ -176,7 +176,6 @@ function renderProducts(gridId, productList) {
           <p class="product-price">$${product.price.toFixed(2)}</p>
           <div class="product-actions">
             <button class="btn btn-add" data-id="${product.id}">Add to Cart</button>
-            <button class="btn btn-contact">Contact</button>
           </div>
         </div>
       </div>
