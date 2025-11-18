@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kristen Couture </title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<header>
+<nav class="navbar">
+<div class="navbar-container">
+<div class="logo">
+<a href="index.html">Kristen Couture</a>
+</div>
+
+<div class="search-bar">
+<input type="text" class="search-input" placeholder="Search for items and brands" id="search-input">
+</div>
+
+<div class="nav-categories">
+<a href="store.html">Women</a>
+<a href="store.html">Men</a>
+<a href="new-collection.html">New In</a>
+<a href="store.html">Sale</a>
+</div>
+
+<a href="cart.html" class="cart-icon">
+<span class="cart-icon-text">🛒</span>
+<span id="cart-count" class="cart-count">0</span>
+</a>
+
+<button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+</div>
+</nav>
+</header>
+
+
+<main>
+<section class="page-section">
+<h2>Our Products</h2>
+<div class="filters-sort">
+<div class="filter-group">
+<select class="filter-select" id="category-filter">
+<option value="">All Categories</option>
+<option value="dresses">Dresses</option>
+<option value="jackets">Simple Wears</option>
+<option value="accessories">Accessories</option>
+</select>
+<select class="filter-select" id="price-filter">
+<option value="">All Prices</option>
+<option value="0-100">$0 - $100</option>
+<option value="100-200">$100 - $200</option>
+<option value="200-300">$200 - $300</option>
+<option value="300+">$300+</option>
+</select>
+</div>
+<select class="sort-select" id="sort-select">
+<option value="name">Sort by Name</option>
+<option value="price-low">Price: Low to High</option>
+<option value="price-high">Price: High to Low</option>
+</select>
+</div>
+<div class="products-grid" id="product-grid"></div>
+</section>
+</main>
+
+
+<footer>
+<div class="footer-inner">
+<div class="footer-content">
+<div class="footer-section">
+<h4>Help & Information</h4>
+<ul>
+<li><a href="#">Help</a></li>
+<li><a href="#">Track Order</a></li>
+<li><a href="#">Delivery & Returns</a></li>
+<li><a href="#">Size Guide</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>About Kristen Couture</h4>
+<ul>
+<li><a href="about.html">About Us</a></li>
+<li><a href="#">Careers</a></li>
+<li><a href="#">Corporate</a></li>
+<li><a href="#">Investors</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>More From Us</h4>
+<ul>
+<li><a href="#">Click Events</a></li>
+<li><a href="#">builtbypinchie</a></li>
+<li><a href="#">Gift Vouchers</a></li>
+<li><a href="#">Black Friday</a></li>
+</ul>
+</div>
+<div class="footer-section">
+<h4>Shopping From</h4>
+<ul>
+<li><a href="#">You're in Nigeria</a></li>
+<li><a href="#">Change Country</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>© 2025 Kristen Couture. All rights reserved.</p>
+<div class="socials">
+<a href="#" aria-label="Instagram">📷</a>
+<a href="#" aria-label="WhatsApp">💬</a>
+<a href="#" aria-label="Twitter">🐦</a>
+<a href="#" aria-label="Facebook">📘</a>
+</div>
+</div>
+</div>
+</footer>
+
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
