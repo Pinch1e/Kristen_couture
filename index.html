@@ -1,316 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Product Grid — ASOS-style Cards</title>
-<style>
-  :root{
-    --bg: #f6f7f9;
-    --card-bg: #ffffff;
-    --muted: #888d94;
-    --accent: #111111;
-    --primary: #ff6b6b; /* change to your brand color */
-    --radius: 12px;
-    --gap: 18px;
-    --shadow: 0 6px 18px rgba(16,20,24,0.06);
-    --transition: 180ms cubic-bezier(.2,.9,.3,1);
-    --card-width: 280px;
-  }
-
-  /* Page styling */
-  body{
-    margin:0;
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background:var(--bg);
-    color:var(--accent);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    padding:36px;
-    display:flex;
-    justify-content:center;
-  }
-
-  /* Grid */
-  .product-grid{
-    width:100%;
-    max-width:1200px;
-    display:grid;
-    gap:var(--gap);
-    grid-template-columns: repeat(auto-fill, minmax(var(--card-width), 1fr));
-    align-items:start;
-  }
-
-  /* Card */
-  .card{
-    background:var(--card-bg);
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    transition:transform var(--transition), box-shadow var(--transition);
-    will-change:transform;
-  }
-  .card:focus-within,
-  .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 18px 40px rgba(16,20,24,0.12);
-  }
-
-  /* Image area — preserve nice aspect ratio */
-  .media {
-    position:relative;
-    width:100%;
-    overflow:hidden;
-    background:linear-gradient(180deg,#f3f3f3,#f8f8f8);
-  }
-  /* maintain 4:5 product photo ratio (common ecommerce) */
-  .media::before{
-    content:"";
-    display:block;
-    padding-top:125%; /* 4:5 -> 80% ; tweak for desired ratio (125% is tall) */
-  }
-  .media img{
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transform:translate(-50%,-50%);
-    display:block;
-  }
-
-  /* Card body */
-  .card-body{
-    padding:14px 14px 16px;
-    display:flex;
-    flex-direction:column;
-    gap:8px;
-  }
-
-  .title{
-    font-size:14px;
-    line-height:1.2;
-    font-weight:600;
-    color:var(--accent);
-    margin:0;
-  }
-  .subtitle{
-    font-size:13px;
-    color:var(--muted);
-    margin:0;
-  }
-
-  /* price row */
-  .price-row{
-    margin-top:6px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:12px;
-  }
-  .price{
-    font-weight:700;
-    font-size:16px;
-  }
-  .old-price{
-    color:var(--muted);
-    font-size:13px;
-    text-decoration:line-through;
-    margin-left:8px;
-    font-weight:500;
-  }
-
-  /* Add to cart */
-  .actions{
-    margin-top:8px;
-    display:flex;
-    gap:10px;
-    align-items:center;
-  }
-  .btn {
-    -webkit-appearance:none;
-    appearance:none;
-    border:0;
-    padding:10px 14px;
-    border-radius:10px;
-    font-weight:700;
-    cursor:pointer;
-    transition:transform var(--transition), box-shadow var(--transition);
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-  }
-
-  .btn-primary{
-    background:var(--primary);
-    color:white;
-    box-shadow:0 6px 14px rgba(0,0,0,0.08);
-  }
-  .btn-primary:active{ transform:translateY(1px) scale(.997); }
-  .btn-outline{
-    background:transparent;
-    color:var(--accent);
-    border:1px solid rgba(16,20,24,0.06);
-  }
-
-  /* Small subtle add-to-cart price inside button (optional) */
-  .btn .price-inline{
-    font-weight:700;
-    font-size:13px;
-  }
-
-  /* Accessibility focus styles */
-  .btn:focus{ outline:3px solid rgba(0,0,0,0.06); outline-offset:3px; }
-  .card:focus-within{ outline:3px solid rgba(17,17,17,0.04); outline-offset:3px; }
-
-  /* tiny product meta row */
-  .meta{
-    margin-top:auto; /* push to bottom if card grows */
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    font-size:12px;
-    color:var(--muted);
-  }
-
-  /* Responsive tweaks */
-  @media (max-width:560px){
-    body{ padding:18px; }
-    :root{ --card-width: 220px; }
-    .price{ font-size:15px; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FashionStore - Modern Ecommerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="FashionStore homepage">FashionStore</a>
 
-<main class="product-grid" aria-label="Product list">
-  <!-- PRODUCT CARD 1 -->
-  <article class="card" tabindex="0" aria-labelledby="p1-name">
-    <div class="media" aria-hidden="true">
-      <img src="https://images.pexels.com/photos/1002642/pexels-photo-1002642.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=600"
-           alt="Slim fit denim jacket" />
-    </div>
+      <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle menu">
+        <span class="hamburger"></span>
+      </button>
 
-    <div class="card-body">
-      <h3 id="p1-name" class="title">Slim Fit Denim Jacket</h3>
-      <p class="subtitle">Blue wash — Sizes S to XL</p>
+      <nav id="primary-navigation" class="main-nav" role="navigation" aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="store.html">Shop</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="cart.html" class="cart-link" aria-label="View cart">Cart 🛒<span id="cart-count" aria-live="polite" class="cart-count">0</span></a></li>
+        </ul>
+      </nav>
 
-      <div class="price-row">
-        <div>
-          <span class="price">€49.99</span>
-          <span class="old-price">€79.99</span>
-        </div>
-
-        <div class="actions">
-          <button class="btn btn-outline" aria-label="Quick view Slim Fit Denim Jacket">Preview</button>
-          <button class="btn btn-primary add-to-cart" data-id="p1" aria-label="Add Slim Fit Denim Jacket to cart">
-            Add to cart
-          </button>
-        </div>
-      </div>
-
-      <div class="meta">
-        <span>Free returns</span>
-        <span>In stock</span>
+      <div class="search-container">
+        <input type="search" id="search" name="search" placeholder="Search products" aria-label="Search products" autocomplete="off" />
+        <div id="search-suggestions" class="search-suggestions" role="listbox" aria-label="Search suggestions"></div>
       </div>
     </div>
-  </article>
+  </header>
 
-  <!-- PRODUCT CARD 2 -->
-  <article class="card" tabindex="0" aria-labelledby="p2-name">
-    <div class="media" aria-hidden="true">
-      <img src="https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=600"
-           alt="White linen shirt" />
-    </div>
-
-    <div class="card-body">
-      <h3 id="p2-name" class="title">Relaxed Linen Shirt</h3>
-      <p class="subtitle">Lightweight — summer staple</p>
-
-      <div class="price-row">
-        <div>
-          <span class="price">€29.99</span>
-        </div>
-
-        <div class="actions">
-          <button class="btn btn-outline" aria-label="Quick view Relaxed Linen Shirt">Preview</button>
-          <button class="btn btn-primary add-to-cart" data-id="p2" aria-label="Add Relaxed Linen Shirt to cart">
-            Add to cart
-          </button>
-        </div>
+  <main>
+    <section class="hero-banner">
+      <div class="container hero-content">
+        <h1>Discover Your Style</h1>
+        <p class="hero-subtitle">Latest trends & collections at your fingertips</p>
+        <a href="store.html" class="btn btn-primary hero-cta">Shop Now</a>
       </div>
+    </section>
 
-      <div class="meta">
-        <span>Fast shipping</span>
-        <span>Only 5 left</span>
+    <section class="featured-categories container" aria-label="Featured categories">
+      <h2>Shop by Category</h2>
+      <div class="categories-grid">
+        <a href="store.html?category=men" class="category-card" aria-label="Shop men's collection">
+          <img src="images/category-men.jpg" alt="Men's fashion" loading="lazy" />
+          <span>Men</span>
+        </a>
+        <a href="store.html?category=women" class="category-card" aria-label="Shop women's collection">
+          <img src="images/category-women.jpg" alt="Women's fashion" loading="lazy" />
+          <span>Women</span>
+        </a>
+        <a href="store.html?category=accessories" class="category-card" aria-label="Shop accessories">
+          <img src="images/category-accessories.jpg" alt="Accessories" loading="lazy" />
+          <span>Accessories</span>
+        </a>
       </div>
-    </div>
-  </article>
+    </section>
 
-  <!-- PRODUCT CARD 3 -->
-  <article class="card" tabindex="0" aria-labelledby="p3-name">
-    <div class="media" aria-hidden="true">
-      <img src="https://images.pexels.com/photos/2983466/pexels-photo-2983466.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=800&w=600"
-           alt="Black sneakers" />
-    </div>
+    <section class="product-grid container" aria-label="Featured products">
+      <!-- Products rendered by JavaScript -->
+    </section>
+  </main>
 
-    <div class="card-body">
-      <h3 id="p3-name" class="title">Everyday Black Sneakers</h3>
-      <p class="subtitle">Comfort foam sole</p>
-
-      <div class="price-row">
-        <div>
-          <span class="price">€59.99</span>
-        </div>
-
-        <div class="actions">
-          <button class="btn btn-outline" aria-label="Quick view Everyday Black Sneakers">Preview</button>
-          <button class="btn btn-primary add-to-cart" data-id="p3" aria-label="Add Everyday Black Sneakers to cart">
-            Add to cart
-          </button>
-        </div>
-      </div>
-
-      <div class="meta">
-        <span>30-day returns</span>
-        <span>Free delivery</span>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <nav>
+        <a href="about.html">About Us</a>
+        <a href="#">Customer Service</a>
+        <a href="#">Legal</a>
+      </nav>
+      <form id="newsletter" aria-label="Subscribe to newsletter">
+        <label for="email" class="visually-hidden">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required />
+        <button type="submit" class="btn btn-secondary">Subscribe</button>
+      </form>
+      <div class="social-icons" aria-label="Social media links">
+        <a href="#" aria-label="Facebook" class="social-link">Facebook</a>
+        <a href="#" aria-label="Twitter" class="social-link">Twitter</a>
+        <a href="#" aria-label="Instagram" class="social-link">Instagram</a>
       </div>
     </div>
-  </article>
+  </footer>
 
-  <!-- Add more cards as needed -->
-</main>
-
-<script>
-  // Minimal Add-to-Cart simulation (no backend). Replace with fetch/ajax for real store.
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.add-to-cart');
-    if (!btn) return;
-    const id = btn.dataset.id || 'unknown';
-    btn.disabled = true;
-    const orig = btn.innerHTML;
-    btn.innerHTML = 'Adding...';
-    setTimeout(() => {
-      btn.innerHTML = 'Added ✓';
-      btn.style.pointerEvents = 'none';
-      btn.style.opacity = '.95';
-      // Here: call your analytics or update mini cart UI
-      console.log('Added to cart:', id);
-    }, 700);
-  });
-
-  // keyboard activation for card (Enter to open/preview)
-  document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('keydown', (ev) => {
-      if (ev.key === 'Enter') {
-        const firstBtn = card.querySelector('.btn-primary, .btn');
-        if (firstBtn) firstBtn.focus();
-      }
-    });
-  });
-</script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
